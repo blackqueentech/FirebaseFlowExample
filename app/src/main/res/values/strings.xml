@@ -1,6 +1,12 @@
 <resources>
     <string name="app_name">Firebase Flow Example</string>
     <string name="text_load_posts">Load Posts</string>
+    <string name="text_load_posts_english">Load English Posts</string>
+    <string name="text_load_posts_french">Load French Posts</string>
     <string name="text_post_content">Write a post</string>
+    <string name="text_post_author">Write your name</string>
     <string name="text_post">Post</string>
+    <string name="text_select_language">Select Language</string>
+    <string name="language_english">English</string>
+    <string name="language_french">French</string>
 </resources>

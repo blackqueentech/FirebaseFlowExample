@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".ui.main.MainActivity">
 
+
     <TextView
         android:id="@+id/text_post_content"
         android:layout_width="0dp"
@@ -14,18 +15,41 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/field_post_content"
+        app:layout_constraintBottom_toTopOf="@+id/text_select_language"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button_load"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.569" />
+
+    <Button
+        android:id="@+id/button_load_english"
+        android:layout_width="113dp"
+        android:layout_height="69dp"
+        android:layout_marginEnd="16dp"
+        android:text="@string/text_load_posts_english"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/button_load_french"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/button_load_french"
+        android:layout_width="109dp"
+        android:layout_height="64dp"
+        android:layout_marginStart="16dp"
+        android:text="@string/text_load_posts_french"
+        app:layout_constraintBaseline_toBaselineOf="@+id/button_load_english"
+        app:layout_constraintStart_toEndOf="@+id/button_load"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/button_load"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="32dp"
         android:text="@string/text_load_posts"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBaseline_toBaselineOf="@+id/button_load_french"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -34,13 +58,24 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginBottom="16dp"
         android:ems="10"
         android:hint="@string/text_post_content"
         android:inputType="textPersonName"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/button_add"
-        app:layout_constraintHorizontal_bias="0.06"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="Autofill" />
+
+    <EditText
+        android:id="@+id/field_post_author"
+        android:layout_width="323dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="@string/text_post_author"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/field_post_content"
         app:layout_constraintStart_toStartOf="parent"
         tools:ignore="Autofill" />
 
@@ -48,10 +83,54 @@
         android:id="@+id/button_add"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginBottom="16dp"
         android:text="@string/text_post"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
+
+
+    <RadioGroup
+        android:id="@+id/radio_group_language"
+        android:layout_width="295dp"
+        android:layout_height="180dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/text_select_language"
+        app:layout_constraintTop_toBottomOf="@+id/text_post_content">
+
+        <RadioButton
+            android:id="@+id/radio_button_english"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="192dp"
+            android:text="@string/language_english"
+            android:onClick="onRadioButtonClicked"
+            app:layout_constraintBaseline_toBaselineOf="@+id/radio_button_french"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <RadioButton
+            android:id="@+id/radio_button_french"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/language_french"
+            android:onClick="onRadioButtonClicked"
+            app:layout_constraintBaseline_toBaselineOf="@+id/text_select_language"
+            app:layout_constraintEnd_toStartOf="@+id/radio_button_english"
+            app:layout_constraintHorizontal_bias="0.227"
+            app:layout_constraintStart_toEndOf="@+id/text_select_language" />
+
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/text_select_language"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="64dp"
+        android:text="@string/text_select_language"
+        app:layout_constraintBottom_toTopOf="@+id/field_post_author"
+        app:layout_constraintStart_toStartOf="parent" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

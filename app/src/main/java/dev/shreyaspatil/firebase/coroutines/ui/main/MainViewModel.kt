@@ -10,5 +10,9 @@ class MainViewModel(private val repository: PostsRepository) : ViewModel() {
 
     fun getAllPosts() = repository.getAllPosts()
 
+    fun getFrenchPosts() = repository.getFrenchPosts()
+
+    fun getEnglishPosts() = repository.getEnglishPosts()
+
     fun addPost(post: Post) = repository.addPost(post)
 }

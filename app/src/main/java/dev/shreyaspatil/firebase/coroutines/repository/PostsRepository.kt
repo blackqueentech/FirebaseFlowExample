@@ -41,6 +41,45 @@ class PostsRepository {
         emit(State.failed(it.message.toString()))
     }.flowOn(Dispatchers.IO)
 
+
+    fun getFrenchPosts() = flow<State<List<Post>>> {
+        // Emit loading state
+        emit(State.loading())
+
+        val snapshot = mPostsCollection
+            .whereEqualTo("postLanguage", "French")
+            .get()
+            .await()
+        val posts = snapshot.toObjects(Post::class.java)
+
+        // Emit success state with data
+        emit(State.success(posts))
+
+    }.catch {
+        // If exception is thrown, emit failed state along with message.
+        emit(State.failed(it.message.toString()))
+    }.flowOn(Dispatchers.IO)
+
+
+    fun getEnglishPosts() = flow<State<List<Post>>> {
+        // Emit loading state
+        emit(State.loading())
+
+        val snapshot = mPostsCollection
+            .whereEqualTo("postLanguage", "English")
+            .get()
+            .await()
+        val posts = snapshot.toObjects(Post::class.java)
+
+        // Emit success state with data
+        emit(State.success(posts))
+
+    }.catch {
+        // If exception is thrown, emit failed state along with message.
+        emit(State.failed(it.message.toString()))
+    }.flowOn(Dispatchers.IO)
+
+
     /**
      * Adds post [post] into the cloud firestore collection.
      * @return The Flow of [State] which will store state of current action.
